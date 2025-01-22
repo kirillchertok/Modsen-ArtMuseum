@@ -1,0 +1,29 @@
+$background-color: linear-gradient(#343333, #484848, #282828);
+
+.header{
+    background: $background-color;
+    width: calc(100vw - 640px);
+    height: 63px;
+    padding: 32px 320px;
+
+    &__logo{
+        width: 206px;
+        height: 63px;
+    }
+
+    &__container{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    &__actions{
+        display: inline-flex;
+    }
+
+    &__button{
+        font-size: 18px;
+    }
+}

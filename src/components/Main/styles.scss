@@ -1,0 +1,12 @@
+$background-color: rgb(242, 242, 242);
+
+.main{
+    width: calc(100vw - 640px);
+    min-height: calc(100vh - 240px);
+    padding: 120px 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-between;
+    background-color: $background-color;
+}
