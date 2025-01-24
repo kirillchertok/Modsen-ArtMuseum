@@ -6,7 +6,7 @@ $background-color: rgb(242, 242, 242);
     padding: 120px 320px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: space-between;
     background-color: $background-color;
 }

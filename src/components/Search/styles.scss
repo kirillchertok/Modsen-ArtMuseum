@@ -1,0 +1,25 @@
+@import '../../assets/fonts.scss';
+
+.search {
+    border: 2px solid black;
+
+    &__input {
+        width: 30%;
+        height: 50px;
+    }
+
+    &__header {
+        font-family: $lexend-deca;
+        font-size: 64px;
+        font-weight: 700;
+        text-align: center;
+        width: 648px;
+        height: 160px;
+        margin-top: 0;
+
+        &--highlight {
+            color: #F17900;
+            text-transform: capitalize;
+        }
+    }
+}

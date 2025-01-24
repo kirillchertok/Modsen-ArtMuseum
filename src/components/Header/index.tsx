@@ -24,11 +24,7 @@ function Header({ header_type, ...attrs }: IHeader) {
         className={`${baseClass} ${typeClass} ${attrs.className || ""}`}
       >
         <div className={`${baseClass}__container`}>
-          <Img
-            className={`${baseClass}__logo`}
-            src="public/logo.png"
-            alt="logo"
-          />
+          <Img className={`${baseClass}__logo`} src="/logo.png" alt="logo" />
           <Nav className={`${baseClass}__actions`}>
             {header_type !== "home" && (
               <Button

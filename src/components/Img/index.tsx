@@ -1,6 +1,7 @@
+import { ImgHTMLAttributes } from "react";
 import "./styles.scss";
 
-interface IImg {
+interface IImg extends ImgHTMLAttributes<HTMLImageElement> {
   [key: string]: string;
 }
 
