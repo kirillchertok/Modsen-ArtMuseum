@@ -1,0 +1,13 @@
+.random-arts{
+    margin-top: 3rem;
+    display: flex;
+}
+
+.random-arts__grid{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 32%);
+    grid-template-rows: repeat(3, 110px);
+    column-gap: 2%;
+    row-gap: 1rem;
+}

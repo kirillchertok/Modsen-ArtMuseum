@@ -26,15 +26,18 @@ export default class ArtsStore{
     }
 
     setArts(state: IArt[]){
+        const artsSection = document.querySelector('.arts')
+        if (!artsSection) return
+
         state.forEach((art) => {
-            console.log(art)
-            art.image_url = this.imgUrl + '/' + art.image_id + '/full/500,/0/default.jpg'
+            art.image_url = art.image_id ? this.imgUrl + '/' + art.image_id + `/full/${Math.ceil(artsSection.clientWidth / 3)},/0/default.jpg` : ''
         })
         this.arts = state;
     }
 
     setPagination(state: IPagination){
         this.pagination = state;
+        sessionStorage.setItem('currentPage', state.current_page.toString())
     }
 
     setData(imgUrl: string, arts: IArt[], pagination: IPagination){
@@ -46,8 +49,11 @@ export default class ArtsStore{
     async initialFetch(){
         try{
             this.setIsFetching(true)
-            const response = await Arts.getArts(1);
+            const currentPage = Number(sessionStorage.getItem('currentPage')) || 1;
+            const query = sessionStorage.getItem('query') || undefined;
+            const response = await Arts.getArts(currentPage, query);
             if (response){
+                console.log(response.data)
                 this.setIsFetching(false)
             }
             this.setData(response.data.config.iiif_url, response.data.data, response.data.pagination)
@@ -63,8 +69,10 @@ export default class ArtsStore{
 
             this.setIsFetching(true)
             const page = this.pagination.current_page == this.pagination.total_pages ? 1 : this.pagination.current_page + 1
-            const response = await Arts.getArts(page)
+            const query = sessionStorage.getItem('query') || undefined;
+            const response = await Arts.getArts(page, query)
             if (response){
+                console.log(response.data)
                 this.setIsFetching(false)
             }
             this.setData(response.data.config.iiif_url, response.data.data, response.data.pagination)
@@ -80,7 +88,8 @@ export default class ArtsStore{
 
             this.setIsFetching(true)
             const page = this.pagination.current_page == 1 ? this.pagination.total_pages : this.pagination.current_page - 1
-            const response = await Arts.getArts(page)
+            const query = sessionStorage.getItem('query') || undefined;
+            const response = await Arts.getArts(page, query)
             if (response){
                 this.setIsFetching(false)
             }
@@ -96,11 +105,38 @@ export default class ArtsStore{
             if (!this.pagination.total_pages) throw new Error('No data in pagination')
 
             this.setIsFetching(true)
-            const response = await Arts.getArts(page)
+            const query = sessionStorage.getItem('query') || undefined;
+            const response = await Arts.getArts(page, query)
             if (response){
                 this.setIsFetching(false)
             }
             this.setData(response.data.config.iiif_url, response.data.data, response.data.pagination)
+        }
+        catch (e){
+            console.log(e)
+        }
+    }
+
+    async getRandom(limit: number, amountToGet: number){
+        try{
+            this.setIsFetching(true)
+            const response = await Arts.getArtsForRandom(limit)
+            if (response){
+                this.setIsFetching(false)
+            }
+
+            const artworks = response.data.data;
+            if (!artworks || artworks.length === 0) {
+                throw new Error("No artworks found");
+            }
+
+            const shuffled = artworks.sort(() => Math.random() - 0.5);
+            const randomArtworks = shuffled.slice(0, amountToGet);
+
+            randomArtworks.forEach((art) => {
+                art.image_url = art.image_id ? response.data.config.iiif_url + '/' + art.image_id + '/full/80,80/0/default.jpg' : ''
+            })
+            return randomArtworks;
         }
         catch (e){
             console.log(e)

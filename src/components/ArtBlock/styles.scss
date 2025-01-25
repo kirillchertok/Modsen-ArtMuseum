@@ -1,16 +1,27 @@
 @import '../../assets/fonts.scss';
 
+@keyframes appearance {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
 .art{
     height: 100%;
     width: 30%;
     position: relative;
     display: flex;
     justify-content: center;
+    opacity: 0;
+    animation: appearance 0.7s forwards;
 
     &__image{
-        max-width: 100%;
-        max-height: 100%;
-        align-self: flex-start;
+        width: 100%;
+        max-height: 95%;
+        align-self: center;
         justify-self: center;
     }
 
@@ -18,7 +29,7 @@
         position: absolute;
         padding: 1.5rem 1rem;
         width: calc(80% - 2rem);
-        height: calc(30% - 3rem);
+        height: calc(25% - 3rem);
         top: 100%;
         transform: translateY(-100%);
         background-color: white;
@@ -28,36 +39,14 @@
 }
 
 .description__to-favorite{
-    border: 2px solid black;
     width: 30%;
     height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.to-favorite__container{
-    border-radius: 50%;
-    width: 60%;
-    height: 60%;
-    background-color: #F9F9F9;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.7s linear;
-
-    &:hover{
-        transform: translate(2%, 2%);
-    }
+    display: block
 }
 
 .description__text{
     height: 100%;
     width: 70%;
-    border: 2px solid black;
 
     &--title{
         white-space: nowrap;
@@ -77,9 +66,13 @@
     &--artist{
         font-size: 1rem;
         color: #E0A449;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     &--is-public{
+        margin-top: 10%;
         font-size: 0.9rem;
         font-weight: 700;
     }
