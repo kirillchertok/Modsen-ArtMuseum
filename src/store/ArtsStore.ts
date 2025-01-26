@@ -53,7 +53,6 @@ export default class ArtsStore{
             const query = sessionStorage.getItem('query') || undefined;
             const response = await Arts.getArts(currentPage, query);
             if (response){
-                console.log(response.data)
                 this.setIsFetching(false)
             }
             this.setData(response.data.config.iiif_url, response.data.data, response.data.pagination)
@@ -72,7 +71,6 @@ export default class ArtsStore{
             const query = sessionStorage.getItem('query') || undefined;
             const response = await Arts.getArts(page, query)
             if (response){
-                console.log(response.data)
                 this.setIsFetching(false)
             }
             this.setData(response.data.config.iiif_url, response.data.data, response.data.pagination)
@@ -137,6 +135,55 @@ export default class ArtsStore{
                 art.image_url = art.image_id ? response.data.config.iiif_url + '/' + art.image_id + '/full/80,80/0/default.jpg' : ''
             })
             return randomArtworks;
+        }
+        catch (e){
+            console.log(e)
+        }
+    }
+
+    async getDetails(id: number){
+        try{
+            this.setIsFetching(true)
+            const response = await Arts.getDetails(id)
+            if(response){
+                this.setIsFetching(false)
+            }
+
+            const artwork = response.data.data
+
+            const main = document.querySelector('main')
+            const imageWidth = Math.round(main.clientWidth / 3)
+
+            artwork.image_url = artwork.image_id ? response.data.config.iiif_url + '/' + artwork.image_id + `/full/${imageWidth},/0/default.jpg` : ''
+            return artwork
+        }
+        catch (e: any){
+            if(e.status == 404){
+                return "No artwork with this id"
+            }
+            else{
+                console.log(e)
+            }
+        }
+    }
+
+    async getFavorites(ids: number[]){
+        try{
+            this.setIsFetching(true)
+            const response = await Arts.getFavorites(ids.join(','))
+            if(response){
+                this.setIsFetching(false)
+            }
+
+            const artworks = response.data.data;
+            if (!artworks || artworks.length === 0) {
+                throw new Error("No artworks found");
+            }
+
+            artworks.forEach((art) => {
+                art.image_url = art.image_id ? response.data.config.iiif_url + '/' + art.image_id + '/full/80,80/0/default.jpg' : ''
+            })
+            return artworks;
         }
         catch (e){
             console.log(e)

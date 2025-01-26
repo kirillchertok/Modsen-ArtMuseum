@@ -1,17 +1,15 @@
 interface IArt{
     id: number;
     title: string;
-    date_start: number;
-    date_end: number;
+    date_display: string;
     artist_title: string;
-    place_of_origin: string;
-    description: string;
     dimensions: string;
     credit_line: string;
-    catalogue_display: string;
     image_id: string;
     image_url?: string;
     is_public_domain: boolean;
+    artist_display: string;
+    department_title: string;
 }
 
 interface IConfig{
@@ -32,9 +30,21 @@ interface IArtsResponse{
     pagination: IPagination;
 }
 
+interface IArtResponse{
+    data: IArt;
+    config: IConfig;
+}
+
+interface IFavoriteArts{
+    data: IArt[];
+    config: IConfig;
+}
+
 export type{
     IArt,
     IConfig,
     IPagination,
-    IArtsResponse
+    IArtsResponse,
+    IArtResponse,
+    IFavoriteArts
 }

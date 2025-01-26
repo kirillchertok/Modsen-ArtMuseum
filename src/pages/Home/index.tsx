@@ -7,7 +7,7 @@ import Search from '../../components/Search'
 import FoundArts from '../../components/FoundArts'
 import { observer } from 'mobx-react-lite'
 import { Context } from '../../main'
-import RandomArts from '../../components/RandomArts'
+import ArtsGrid from '../../components/ArtsGrid'
 
 function HomeComponent() {
     const { artsStore } = useContext(Context)
@@ -32,7 +32,7 @@ function HomeComponent() {
                     searchQuery={searchQuery}
                     arts={artsStore.arts}
                 />
-                <RandomArts />
+                <ArtsGrid dataType={'random'} />
             </Main>
             <Footer />
         </>

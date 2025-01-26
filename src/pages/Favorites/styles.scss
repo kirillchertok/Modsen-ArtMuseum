@@ -1,0 +1,21 @@
+@import '../../assets/fonts.scss';
+
+.favorites__headers{
+    font-family: $lexend-deca;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    & > *{
+        font-weight: $font-weight-bold;
+        font-size: 64px;
+        margin: 0;
+        text-align: center;
+    }
+
+    &__orange{
+        color: #F17900;
+        display: inline-flex;
+    }
+}

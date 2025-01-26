@@ -1,4 +1,13 @@
 export default class Favorites{
+    static getFavorites(): number[]{
+        if(!sessionStorage.getItem('favorites')) return []
+
+        const favorites = sessionStorage.getItem('favorites')
+        if (!favorites) return []
+
+        return favorites.split(' ').map(fav => Number(fav))
+    }
+
     static addToFavorite(id: number): void {
         if (!sessionStorage.getItem('favorites')) {
             sessionStorage.setItem('favorites', id.toString())

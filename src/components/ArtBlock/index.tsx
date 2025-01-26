@@ -3,6 +3,7 @@ import Img from '../Img'
 import './styles.scss'
 import noImageImg from '@assets/images/no-image.png'
 import AddFavorite from '../AddFavorite'
+import { Link } from 'react-router-dom'
 
 interface IArtBlock {
     data: IArt
@@ -23,10 +24,15 @@ function ArtBlock({ data, ...attrs }: IArtBlock) {
                 />
                 <div className="art__description">
                     <div className="description__text">
-                        <p className="description__text--title">{data.title}</p>
-                        <span className="description__text--artist">
+                        <Link
+                            to={`/details/${data.id}`}
+                            className="description__text--title"
+                        >
+                            {data.title}
+                        </Link>
+                        <p className="description__text--artist">
                             {data.artist_title || 'Unknown'}
-                        </span>
+                        </p>
                         <p className="description__text--is-public">
                             {!data.is_public_domain ? 'Not ' : ''}Public
                         </p>

@@ -2,7 +2,7 @@ import { HTMLAttributes, useState } from 'react'
 import Img from '../Img'
 import './styles.scss'
 import bookMarkImg from '@assets/images/bookmark.png'
-import Favorites from '../../utils/favorites'
+import Favorites from '../../utils/favourites'
 
 interface IAddFavorite extends HTMLAttributes<HTMLElement> {
     id: number

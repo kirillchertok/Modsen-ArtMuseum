@@ -21,6 +21,10 @@ $background-color: linear-gradient(#343333, #484848, #282828);
 
     &__actions{
         display: inline-flex;
+        align-items: center;
+        & > *{
+            text-decoration: none;
+        }
     }
 
     &__button{

@@ -1,9 +1,9 @@
-.random-arts{
+.arts-grid{
     margin-top: 3rem;
     display: flex;
 }
 
-.random-arts__grid{
+.arts-grid__grid{
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 32%);
