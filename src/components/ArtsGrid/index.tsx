@@ -8,21 +8,25 @@ import ArtGridBlock from '../ArtGridBlock'
 import Favorites from '../../utils/favourites'
 import ArtsGridHeaders from './ArtsGridHeaders'
 import ARTS_GRID_HEADERS from '../../constants/artsGridHeaders'
+import Sort from '../Sort'
+import { observer } from 'mobx-react-lite'
 
 interface IArtsGrid {
     dataType: 'random' | 'favorites'
 }
 
-function ArtsGrid({ dataType }: IArtsGrid) {
+function ArtsGridComponent({ dataType }: IArtsGrid) {
     const { artsStore } = useContext(Context)
 
     const [arts, setArts] = useState(Array<IArt>)
+    const [sortedArts, setSortedArts] = useState(Array<IArt>)
 
     useEffect(() => {
         const fetchRandomArts = async () => {
             const response = await artsStore.getRandom(AMOUNT_TO_FETCH, AMOUNT_TO_GET)
             if (response) {
                 setArts(response)
+                setSortedArts(response)
             }
         }
 
@@ -33,6 +37,7 @@ function ArtsGrid({ dataType }: IArtsGrid) {
             const response = await artsStore.getFavorites(favorites)
             if (response) {
                 setArts(response)
+                setSortedArts(response)
             }
         }
 
@@ -47,6 +52,21 @@ function ArtsGrid({ dataType }: IArtsGrid) {
         }
     }, [])
 
+    useEffect(() => {
+        const selectedParameter = artsStore.sortParameter
+        const sortedArts = [...arts]
+
+        if (selectedParameter !== 'no_sort') {
+            sortedArts.sort((a, b) => {
+                const valA = a[selectedParameter]?.toString().toLowerCase() || ''
+                const valB = b[selectedParameter]?.toString().toLowerCase() || ''
+                return valA.localeCompare(valB)
+            })
+        }
+
+        setSortedArts(sortedArts)
+    }, [artsStore.sortParameter, arts])
+
     return (
         <>
             <Section className="arts-grid">
@@ -56,9 +76,10 @@ function ArtsGrid({ dataType }: IArtsGrid) {
                         second={ARTS_GRID_HEADERS[`${dataType}`][1]}
                     />
                 </div>
+                {dataType === 'favorites' && <Sort />}
                 <div className="arts-grid__grid">
-                    {arts &&
-                        arts.map((art) => (
+                    {sortedArts &&
+                        sortedArts.map((art) => (
                             <ArtGridBlock
                                 data={art}
                                 key={art.id}
@@ -70,4 +91,5 @@ function ArtsGrid({ dataType }: IArtsGrid) {
     )
 }
 
+const ArtsGrid = observer(ArtsGridComponent)
 export default ArtsGrid

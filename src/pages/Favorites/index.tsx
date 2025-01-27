@@ -6,10 +6,16 @@ import Main from '@/components/Main'
 import Section from '@/components/Section'
 import './styles.scss'
 import bookmarkLargeImage from '@/assets/images/bookmarkLarge.png'
+import { useContext } from 'react'
+import { Context } from '@/main'
+import Loader from '@/components/Loader'
 
 function Favorites() {
+    const { artsStore } = useContext(Context)
+
     return (
         <>
+            {artsStore.isFetching && <Loader />}
             <Header header_type="favorites" />
             <Main>
                 <Section className="favorites">

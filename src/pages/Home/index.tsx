@@ -8,6 +8,7 @@ import FoundArts from '../../components/FoundArts'
 import { observer } from 'mobx-react-lite'
 import { Context } from '../../main'
 import ArtsGrid from '../../components/ArtsGrid'
+import Loader from '@/components/Loader'
 
 function HomeComponent() {
     const { artsStore } = useContext(Context)
@@ -25,6 +26,7 @@ function HomeComponent() {
 
     return (
         <>
+            {artsStore.isFetching && <Loader />}
             <Header header_type="home" />
             <Main>
                 <Search onSearch={handleSearch} />

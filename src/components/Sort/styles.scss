@@ -1,0 +1,37 @@
+@import '../../assets/fonts.scss';
+
+.sort{
+    width: 20%;
+    height: 3rem;
+    align-self: flex-start;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    & > *{
+        font-family: $lexend-deca;
+    }
+
+    &__label{
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+
+    &__select{
+        background-color: white;
+        display: flex;
+        height: 100%;
+        width: auto;
+        margin-left: 1rem;
+        border: none;
+        font-size: 1rem;
+        border-radius: 10px;
+        padding: 0.5rem;
+        box-sizing: border-box;
+
+        &:focus{
+            outline: none;
+        }
+    }
+}

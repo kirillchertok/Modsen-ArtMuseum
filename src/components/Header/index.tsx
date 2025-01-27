@@ -1,12 +1,11 @@
+import React, { useState, useRef } from 'react'
 import { HTMLAttributes } from 'react'
 import './styles.scss'
-import Button from '@/components/Button/index'
 import Img from '@/components/Img'
-import bookmarkImg from '@/assets/images/bookmark.png'
-import homeImg from '@/assets/images/home.png'
-import Nav from '../Nav'
 import removeClassFromAttrs from '@/utils/removeClassFromAttrs'
-import { Link } from 'react-router-dom'
+import { SideBarReactIcon } from '@/constants/icons'
+import useClickOutside from '@/hooks/useClickOutside'
+import Nav from '../Nav'
 
 interface IHeader extends HTMLAttributes<HTMLHeadElement> {
     header_type: string
@@ -17,6 +16,11 @@ function Header({ header_type, ...attrs }: IHeader) {
     const baseClass = 'header'
     const typeClass = baseClass + '--' + header_type
     const attrsNoClass = removeClassFromAttrs(attrs)
+
+    const [isMenuOpen, setMenuOpen] = useState(false)
+    const menuRef = useRef<HTMLDivElement>(null)
+
+    useClickOutside(menuRef, () => setMenuOpen(false))
 
     return (
         <>
@@ -30,36 +34,36 @@ function Header({ header_type, ...attrs }: IHeader) {
                         src="/logo.png"
                         alt="logo"
                     />
-                    <Nav className={`${baseClass}__actions`}>
-                        {header_type !== 'home' && (
-                            <Link to={`/`}>
-                                <Button
-                                    button_type="icon_text"
-                                    text="Home"
-                                    icon={
-                                        <Img
-                                            src={homeImg}
-                                            alt="home"
-                                        />
-                                    }
-                                    className="header__button header__button--home"
-                                />
-                            </Link>
+                    <div className={`${baseClass}__burger`}>
+                        {!isMenuOpen && (
+                            <>
+                                <div
+                                    className={`${baseClass}__burger__button`}
+                                    onClick={() => setMenuOpen(true)}
+                                >
+                                    <SideBarReactIcon />
+                                </div>
+                            </>
                         )}
-                        <Link to={`/favorites`}>
-                            <Button
-                                button_type="icon_text"
-                                icon={
-                                    <Img
-                                        src={bookmarkImg}
-                                        alt="bookmark"
+                        {isMenuOpen && (
+                            <>
+                                <div
+                                    className={`${baseClass}__burger__container`}
+                                    ref={menuRef}
+                                >
+                                    <Nav
+                                        header_type={header_type}
+                                        nav_type="default"
                                     />
-                                }
-                                text="Your favorites"
-                                className="header__button header__button--favorites"
-                            />
-                        </Link>
-                    </Nav>
+                                </div>
+                            </>
+                        )}
+                    </div>
+                    <Nav
+                        className={`${baseClass}__actions`}
+                        header_type={header_type}
+                        nav_type="default"
+                    />
                 </div>
             </header>
         </>

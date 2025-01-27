@@ -13,6 +13,8 @@ export default class ArtsStore{
         total_pages: 0
     };
 
+    sortParameter : 'no_sort' | 'title' | 'artist_title' = 'no_sort'
+
     constructor(){
         makeAutoObservable(this)
     }
@@ -44,6 +46,10 @@ export default class ArtsStore{
         this.setImgUrl(imgUrl)
         this.setArts(arts)
         this.setPagination(pagination)
+    }
+
+    setSortParameter(state: 'no_sort' | 'title' | 'artist_title'){
+        this.sortParameter = state
     }
 
     async initialFetch(){

@@ -10,6 +10,7 @@ import { IArt } from '@/services/interfaces/IArt'
 import Img from '@/components/Img'
 import noImageImage from '@/assets/images/no-image.png'
 import AddFavorite from '@/components/AddFavorite'
+import Loader from '@/components/Loader'
 
 function Details() {
     const { artsStore } = useContext(Context)
@@ -39,6 +40,7 @@ function Details() {
 
     return (
         <>
+            {artsStore.isFetching && <Loader />}
             <Header header_type="details" />
             <Main>
                 {error.length !== 0 || !art ? (
