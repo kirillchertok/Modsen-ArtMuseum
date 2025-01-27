@@ -70,6 +70,10 @@ $background-color: linear-gradient(#343333, #484848, #282828);
             animation: burger 0.5s linear forwards;
             border-top-left-radius: 1rem;
             border-bottom-left-radius: 1rem;
+
+            &>* {
+                text-decoration: none;
+            }
         }
     }
 
