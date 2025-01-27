@@ -30,7 +30,7 @@ export default class ArtsStore{
         if (!artsSection) return
 
         state.forEach((art) => {
-            art.image_url = art.image_id ? this.imgUrl + '/' + art.image_id + `/full/${Math.ceil(artsSection.clientWidth / 3)},/0/default.jpg` : ''
+            art.image_url = art.image_id ? this.imgUrl + '/' + art.image_id + `/full/${Math.ceil(artsSection.clientWidth)},/0/default.jpg` : ''
         })
         this.arts = state;
     }
@@ -152,7 +152,7 @@ export default class ArtsStore{
             const artwork = response.data.data
 
             const main = document.querySelector('main')
-            const imageWidth = Math.round(main.clientWidth / 3)
+            const imageWidth = Math.round(main!.clientWidth)
 
             artwork.image_url = artwork.image_id ? response.data.config.iiif_url + '/' + artwork.image_id + `/full/${imageWidth},/0/default.jpg` : ''
             return artwork

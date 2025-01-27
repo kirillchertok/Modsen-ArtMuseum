@@ -1,15 +1,15 @@
 import { useParams } from 'react-router-dom'
 import './styles.scss'
-import Header from '../../components/Header'
-import Main from '../../components/Main'
-import Footer from '../../components/Footer'
+import Header from '@/components/Header'
+import Main from '@/components/Main'
+import Footer from '@/components/Footer'
 import { useContext, useEffect, useState } from 'react'
 import { Context } from '../../main'
-import DetailsError from '../../components/DetailsError'
-import { IArt } from '../../services/interfaces/IArt'
-import Img from '../../components/Img'
-import noImageImage from '@assets/images/no-image.png'
-import AddFavorite from '../../components/AddFavorite'
+import DetailsError from '@/components/DetailsError'
+import { IArt } from '@/services/interfaces/IArt'
+import Img from '@/components/Img'
+import noImageImage from '@/assets/images/no-image.png'
+import AddFavorite from '@/components/AddFavorite'
 
 function Details() {
     const { artsStore } = useContext(Context)
@@ -55,7 +55,7 @@ function Details() {
                                     className="details__image__img"
                                 />
                                 <AddFavorite
-                                    id={art.id}
+                                    artId={art.id}
                                     className="details__image__favorite"
                                 />
                             </div>

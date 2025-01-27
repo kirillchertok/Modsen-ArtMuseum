@@ -7,7 +7,11 @@
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 32%);
-    grid-template-rows: repeat(3, 110px);
+    grid-template-rows: repeat(auto, 110px);
     column-gap: 2%;
     row-gap: 1rem;
+
+    @media (max-width: 1024px) {
+        grid-template-columns: repeat(1, 100%);
+    }
 }

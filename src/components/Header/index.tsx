@@ -1,11 +1,11 @@
 import { HTMLAttributes } from 'react'
 import './styles.scss'
-import Button from '@components/Button/index'
-import Img from '@components/Img'
-import bookmarkImg from '@assets/images/bookmark.png'
-import homeImg from '@assets/images/home.png'
+import Button from '@/components/Button/index'
+import Img from '@/components/Img'
+import bookmarkImg from '@/assets/images/bookmark.png'
+import homeImg from '@/assets/images/home.png'
 import Nav from '../Nav'
-import removeClassFromAttrs from '@utils/removeClassFromAttrs'
+import removeClassFromAttrs from '@/utils/removeClassFromAttrs'
 import { Link } from 'react-router-dom'
 
 interface IHeader extends HTMLAttributes<HTMLHeadElement> {

@@ -2,13 +2,22 @@ $background-color: linear-gradient(#343333, #484848, #282828);
 
 .header{
     background: $background-color;
-    width: calc(100vw - 640px);
-    height: 63px;
+    width: 100%;
+    height: 8rem;
     padding: 32px 320px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    z-index: 3;
+
+    @media (max-width: 1024px) {
+        padding: 0;
+    }
 
     &__logo{
-        width: 206px;
-        height: 63px;
+        width: 12.875rem;
+        height: 4rem;
     }
 
     &__container{
@@ -17,6 +26,7 @@ $background-color: linear-gradient(#343333, #484848, #282828);
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
     }
 
     &__actions{

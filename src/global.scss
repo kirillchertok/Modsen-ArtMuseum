@@ -7,11 +7,20 @@ html {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    overflow-x: hidden;
 }
-
 html{
     font-size: $font-size-base;
     font-weight: $font-weight-regular;
     font-style: $font-style;
-    overflow-x: hidden;
+
+    @media (max-width: 1024px) {
+        font-size: 10px;
+    }
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }

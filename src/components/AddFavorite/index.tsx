@@ -1,16 +1,16 @@
 import { HTMLAttributes, useState } from 'react'
 import Img from '../Img'
 import './styles.scss'
-import bookMarkImg from '@assets/images/bookmark.png'
+import bookMarkImg from '@/assets/images/bookmark.png'
 import Favorites from '../../utils/favourites'
 
 interface IAddFavorite extends HTMLAttributes<HTMLElement> {
-    id: number
+    artId: number
     [key: string]: any
 }
 
-function AddFavorite({ id, ...attrs }: IAddFavorite) {
-    const [favorite, setFavorite] = useState(Favorites.checkInclude(id))
+function AddFavorite({ artId, ...attrs }: IAddFavorite) {
+    const [favorite, setFavorite] = useState(Favorites.checkInclude(artId))
 
     return (
         <>
@@ -19,10 +19,10 @@ function AddFavorite({ id, ...attrs }: IAddFavorite) {
                     className={`favorite__image-container ${favorite ? 'favorite__image-container--in' : 'favorite__image-container--not-in'}`}
                     onClick={() => {
                         if (favorite) {
-                            Favorites.removeFromFavorite(id)
+                            Favorites.removeFromFavorite(artId)
                             setFavorite(false)
                         } else {
-                            Favorites.addToFavorite(id)
+                            Favorites.addToFavorite(artId)
                             setFavorite(true)
                         }
                     }}

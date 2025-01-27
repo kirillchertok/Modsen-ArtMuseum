@@ -1,11 +1,11 @@
-import ArtsGrid from '../../components/ArtsGrid'
-import Footer from '../../components/Footer'
-import Header from '../../components/Header'
-import Img from '../../components/Img'
-import Main from '../../components/Main'
-import Section from '../../components/Section'
+import ArtsGrid from '@/components/ArtsGrid'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+import Img from '@/components/Img'
+import Main from '@/components/Main'
+import Section from '@/components/Section'
 import './styles.scss'
-import bookmarkLargeImage from '@assets/images/bookmarkLarge.png'
+import bookmarkLargeImage from '@/assets/images/bookmarkLarge.png'
 
 function Favorites() {
     return (

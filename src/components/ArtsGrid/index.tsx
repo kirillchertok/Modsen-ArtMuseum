@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import Section from '../Section'
 import './styles.scss'
 import { IArt } from '../../services/interfaces/IArt'
-import { AMOUNT_TO_GET, AMOUNT_TO_FETCH } from '@constants/randomArts'
+import { AMOUNT_TO_GET, AMOUNT_TO_FETCH } from '@/constants/randomArts'
 import { Context } from '../../main'
 import ArtGridBlock from '../ArtGridBlock'
 import Favorites from '../../utils/favourites'
@@ -10,7 +10,7 @@ import ArtsGridHeaders from './ArtsGridHeaders'
 import ARTS_GRID_HEADERS from '../../constants/artsGridHeaders'
 
 interface IArtsGrid {
-    dataType: string
+    dataType: 'random' | 'favorites'
 }
 
 function ArtsGrid({ dataType }: IArtsGrid) {

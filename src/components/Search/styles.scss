@@ -1,24 +1,27 @@
 @import '../../assets/fonts.scss';
 
 .search {
-
     &__input {
-        width: 500px;
-        height: 50px;
+        width: 31.25rem;
+        height: 3.125rem;
     }
 
     &__header {
         font-family: $lexend-deca;
-        font-size: 64px;
+        font-size: 4rem;
         font-weight: 700;
         text-align: center;
-        width: 648px;
-        height: 160px;
+        width: 40rem;
+        height: 10rem;
         margin-top: 0;
 
         &--highlight {
             color: #F17900;
             text-transform: capitalize;
+        }
+
+        @media (max-width: 1024px) {
+            width: 90%;
         }
     }
 }

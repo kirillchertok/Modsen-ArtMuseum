@@ -5,7 +5,7 @@ import './styles.scss'
 import { Context } from '../../main'
 import { observer } from 'mobx-react-lite'
 import ArtBlock from '../ArtBlock'
-import { PAGE_INTERVAL_LENGTH } from '@constants/pagination'
+import { PAGE_INTERVAL_LENGTH } from '@/constants/pagination'
 
 interface IFoundArts {
     searchQuery: string

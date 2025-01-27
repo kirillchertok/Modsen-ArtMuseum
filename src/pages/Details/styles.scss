@@ -6,6 +6,7 @@
         height: calc(100vh - 494px - 4rem);
         padding: 2rem;
         display: inline-flex;
+        box-sizing: border-box;
     }
     
     &__image{
@@ -21,7 +22,7 @@
         &__favorite{
             position: absolute;
             top: 1rem;
-            left: calc(100% - 60px - 1rem);
+            left: calc(100% - 4.75rem);
         }
     }
 }

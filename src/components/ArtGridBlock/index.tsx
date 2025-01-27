@@ -1,7 +1,7 @@
 import { IArt } from '../../services/interfaces/IArt'
 import Img from '../Img'
 import './styles.scss'
-import noImageImg from '@assets/images/no-image.png'
+import noImageImg from '@/assets/images/no-image.png'
 import AddFavorite from '../AddFavorite'
 import { Link } from 'react-router-dom'
 
@@ -35,7 +35,7 @@ function ArtGridBlock({ data }: IArtGridBlock) {
                         </p>
                     </div>
                     <AddFavorite
-                        id={data.id}
+                        artId={data.id}
                         className="art-grid__description__favorite"
                     />
                 </div>

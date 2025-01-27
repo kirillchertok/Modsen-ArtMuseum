@@ -7,11 +7,18 @@
 
 .arts__blocks{
     width: 100%;
-    height: 60vh;
+    // min-height: 10vh;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: 1024px) {
+        justify-content: center;
+        gap: 1rem;
+        flex-basis: 100%;
+    }
 }
 
 .arts__headers{
@@ -37,11 +44,10 @@
 
 .arts__pagination{
     margin-top: 1rem;
-    max-width: 16%;
+    max-width: 10rem;
     height: 10%;
     display: inline-flex;
     gap: 0.5rem;
-    justify-self: flex-end;
     align-self: flex-end;
     font-family: $lexend-deca;
     user-select: none;
@@ -54,7 +60,6 @@
     }
 
     &__pages{
-        display: flex;
         gap: 0.5rem;
         display: inline-flex;
         font-size: 1.2rem;

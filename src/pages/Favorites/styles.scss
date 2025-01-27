@@ -9,7 +9,7 @@
 
     & > *{
         font-weight: $font-weight-bold;
-        font-size: 64px;
+        font-size: 4rem;
         margin: 0;
         text-align: center;
     }
@@ -17,5 +17,11 @@
     &__orange{
         color: #F17900;
         display: inline-flex;
+
+        &--image{
+            width: 4rem;
+            height: 4rem;
+            align-self: center;
+        }
     }
 }
