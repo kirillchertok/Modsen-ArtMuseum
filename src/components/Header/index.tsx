@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import { useState, useRef } from 'react'
 import { HTMLAttributes } from 'react'
 import './styles.scss'
 import Img from '@/components/Img'

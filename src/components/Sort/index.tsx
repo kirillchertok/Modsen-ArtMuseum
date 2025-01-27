@@ -1,6 +1,6 @@
 import removeClassFromAttrs from '@/utils/removeClassFromAttrs'
 import './styles.scss'
-import { HTMLAttributes, useContext, useEffect, useState } from 'react'
+import { HTMLAttributes, useContext } from 'react'
 import { SORT_PARAMETERS } from '@/constants/sortParameters'
 import { Context } from '@/main'
 import { observer } from 'mobx-react-lite'
@@ -29,8 +29,9 @@ function SortComponent({ ...attrs }: ISort) {
                 <select
                     value={artsStore.sortParameter}
                     onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-                        console.log(e.target.value)
-                        artsStore.setSortParameter(e.target.value)
+                        artsStore.setSortParameter(
+                            e.target.value as 'title' | 'no_sort' | 'artist_title'
+                        )
                     }}
                     name="parameter"
                     id="sort-parameter"
