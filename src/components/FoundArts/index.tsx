@@ -1,43 +1,37 @@
-import { useContext, useEffect, useState } from 'react'
-import { IArt } from '../../services/interfaces/IArt'
-import Section from '../Section'
 import './styles.scss'
-import { Context } from '../../main'
-import { observer } from 'mobx-react-lite'
-import ArtBlock from '../ArtBlock'
-import { PAGE_INTERVAL_LENGTH } from '@/constants/pagination'
 
-interface IFoundArts {
-    searchQuery: string
-    arts: IArt[]
-}
+import { observer } from 'mobx-react-lite'
+import { useCallback, useContext, useState } from 'react'
+
+import { PAGE_INTERVAL_LENGTH } from '@/constants/pagination'
+import { usePagination } from '@/hooks/usePagination'
+import { useSearch } from '@/hooks/useSearch'
+import IFoundArts from '@/types/IComponents/IFoundArts'
+
+import { Context } from '@/main'
+import { ArtBlock } from '@/components/ArtBlock'
+import { Section } from '@/components/ui/Section'
 
 function FoundArtsComponent({ searchQuery, arts }: IFoundArts) {
     const { artsStore } = useContext(Context)
 
     const [pages, setPages] = useState(Array<number>)
 
-    useEffect(() => {
-        const currentPage = Number(
-            sessionStorage.getItem('currentPage') || artsStore.pagination.current_page
-        )
-        const pageInterval = Math.min(artsStore.pagination.total_pages, PAGE_INTERVAL_LENGTH)
+    usePagination({ pages, setPages, PAGE_INTERVAL_LENGTH })
 
-        if (
-            currentPage - 1 === pages[pages.length - 1] ||
-            currentPage + 1 === pages[0] ||
-            pages.length === 0
-        ) {
-            setPages(Array.from({ length: pageInterval }, (_, i) => currentPage + i))
-        }
-    }, [artsStore.pagination.current_page])
+    useSearch({ searchQuery })
 
-    useEffect(() => {
-        if (sessionStorage.getItem('query')) sessionStorage.removeItem('query')
-        if (searchQuery) sessionStorage.setItem('query', searchQuery)
+    function prevPageClick() {
+        artsStore.prevPage()
+    }
 
-        artsStore.initialFetch()
-    }, [searchQuery])
+    function nextPageClick() {
+        artsStore.nextPage()
+    }
+
+    const onPageClick = useCallback((page: number) => {
+        artsStore.goToPage(page)
+    }, [])
 
     return (
         <>
@@ -59,7 +53,7 @@ function FoundArtsComponent({ searchQuery, arts }: IFoundArts) {
                     {artsStore.pagination.current_page !== 1 && (
                         <div
                             className="arts__pagination__button"
-                            onClick={() => artsStore.prevPage()}
+                            onClick={prevPageClick}
                         >
                             &lt;
                         </div>
@@ -70,7 +64,7 @@ function FoundArtsComponent({ searchQuery, arts }: IFoundArts) {
                                 <div
                                     key={page}
                                     className={`arts__pagination__page${page === Number(sessionStorage.getItem('currentPage')) ? '--current' : ''}`}
-                                    onClick={() => artsStore.goToPage(page)}
+                                    onClick={onPageClick.bind(null, page)}
                                 >
                                     {page}
                                 </div>
@@ -79,7 +73,7 @@ function FoundArtsComponent({ searchQuery, arts }: IFoundArts) {
                     {artsStore.pagination.current_page < artsStore.pagination.total_pages && (
                         <div
                             className="arts__pagination__button"
-                            onClick={() => artsStore.nextPage()}
+                            onClick={nextPageClick}
                         >
                             &gt;
                         </div>
@@ -91,4 +85,4 @@ function FoundArtsComponent({ searchQuery, arts }: IFoundArts) {
 }
 
 const FoundArts = observer(FoundArtsComponent)
-export default FoundArts
+export { FoundArts }

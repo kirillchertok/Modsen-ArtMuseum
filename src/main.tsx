@@ -1,8 +1,9 @@
-import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
-import { BrowserRouter } from 'react-router-dom'
-import ArtsStore from './store/ArtsStore.ts'
 import { createContext } from 'react'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+
+import App from '@/App.tsx'
+import ArtsStore from '@/store/ArtsStore.ts'
 
 const artsStore = new ArtsStore()
 export const Context = createContext({

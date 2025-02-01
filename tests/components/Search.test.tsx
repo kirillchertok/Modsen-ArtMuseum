@@ -1,8 +1,10 @@
-import React from 'react'
+import '@testing-library/jest-dom'
+
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import Search from '../../src/components/Search'
-import '@testing-library/jest-dom'
+import React from 'react'
+
+import { Search } from '../../src/components/Search'
 
 const mockOnSearch = jest.fn()
 

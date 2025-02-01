@@ -1,0 +1,40 @@
+@import '@/assets/fonts.scss';
+@import '@/assets/variables.scss';
+
+.input__container{
+    display: inline-flex;
+    cursor: pointer;
+}
+
+.input{
+    border: none;
+    font-size: 1.2rem;
+    font-family: $font-inter;
+    border-top-left-radius: $default-border-radius;
+    border-bottom-left-radius: $default-border-radius;
+    width: 90%;
+    height: 100%;
+    background-color: white;
+    padding: 0 1rem;
+
+    &--text{
+        border-top-right-radius: $default-border-radius;
+        border-bottom-right-radius: $default-border-radius;
+    }
+
+    &:focus{
+        outline: none;
+    }
+}
+
+.input__icon{
+    height: 100%;
+    width: 10%;
+    background-color: white;
+    border-top-right-radius: $default-border-radius;
+    border-bottom-right-radius: $default-border-radius;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,16 +1,14 @@
-import { IArt } from '../../services/interfaces/IArt'
-import Img from '../Img'
 import './styles.scss'
-import noImageImg from '@/assets/images/no-image.png'
-import AddFavorite from '../AddFavorite'
+
 import { Link } from 'react-router-dom'
 
-interface IArtBlock {
-    data: IArt
-    [key: string]: any
-}
+import noImageImg from '@/assets/images/no-image.png'
+import { Img } from '@/components/ui/Img'
+import IArtBlock from '@/types/IComponents/IArtBlock'
 
-function ArtBlock({ data, ...attrs }: IArtBlock) {
+import { AddFavorite } from '@/components/AddFavorite'
+
+export function ArtBlock({ data, ...attrs }: IArtBlock) {
     return (
         <>
             <article
@@ -46,5 +44,3 @@ function ArtBlock({ data, ...attrs }: IArtBlock) {
         </>
     )
 }
-
-export default ArtBlock

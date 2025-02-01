@@ -1,9 +1,6 @@
-interface IArtsGridHeaders {
-    first: string
-    second: string
-}
+import IArtsGridHeaders from '@/types/IComponents/IArtsGridHeaders'
 
-function ArtsGridHeaders({ first, second }: IArtsGridHeaders) {
+export function ArtsGridHeaders({ first, second }: IArtsGridHeaders) {
     return (
         <>
             <h3 className="arts__headers--first">{first}</h3>
@@ -11,5 +8,3 @@ function ArtsGridHeaders({ first, second }: IArtsGridHeaders) {
         </>
     )
 }
-
-export default ArtsGridHeaders

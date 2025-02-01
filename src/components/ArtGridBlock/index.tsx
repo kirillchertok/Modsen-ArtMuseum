@@ -1,16 +1,14 @@
-import { IArt } from '../../services/interfaces/IArt'
-import Img from '../Img'
 import './styles.scss'
-import noImageImg from '@/assets/images/no-image.png'
-import AddFavorite from '../AddFavorite'
+
 import { Link } from 'react-router-dom'
 
-interface IArtGridBlock {
-    data: IArt
-    [key: string]: any
-}
+import noImageImg from '@/assets/images/no-image.png'
+import { Img } from '@/components/ui/Img'
+import IArtGridBlock from '@/types/IComponents/IArtGridBlock'
 
-function ArtGridBlock({ data }: IArtGridBlock) {
+import { AddFavorite } from '@/components/AddFavorite'
+
+export function ArtGridBlock({ data }: IArtGridBlock) {
     return (
         <>
             <article className="art-grid__container">
@@ -43,5 +41,3 @@ function ArtGridBlock({ data }: IArtGridBlock) {
         </>
     )
 }
-
-export default ArtGridBlock

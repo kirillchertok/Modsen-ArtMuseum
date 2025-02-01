@@ -1,25 +1,27 @@
-@import './assets/fonts.scss';
+@import '@/assets/fonts.scss';
+@import '@/assets/variables.scss';
 
 body,
 html {
-    margin: 0;
-    padding: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+    margin: $default-item-margin;
+    padding: $default-item-padding;
+    -webkit-box-sizing: $default-item-box-sizing;
+    -moz-box-sizing: $default-item-box-sizing;
+    box-sizing: $default-item-box-sizing;
     overflow-x: hidden;
 }
 html{
     font-size: $font-size-base;
     font-weight: $font-weight-regular;
     font-style: $font-style;
+    color: $default-text-color-dark;
 
     @media (max-width: 1024px) {
-        font-size: 10px;
+        font-size: $font-size-small;
     }
 }
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+    box-sizing: $default-item-box-sizing;
 }

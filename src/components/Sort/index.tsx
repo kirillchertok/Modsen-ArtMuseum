@@ -1,13 +1,12 @@
-import removeClassFromAttrs from '@/utils/removeClassFromAttrs'
 import './styles.scss'
-import { HTMLAttributes, useContext, useEffect, useState } from 'react'
+
+import { observer } from 'mobx-react-lite'
+import { useContext } from 'react'
+
 import { SORT_PARAMETERS } from '@/constants/sortParameters'
 import { Context } from '@/main'
-import { observer } from 'mobx-react-lite'
-
-interface ISort extends HTMLAttributes<HTMLElement> {
-    [key: string]: any
-}
+import ISort from '@/types/IComponents/ISort'
+import removeClassFromAttrs from '@/utils/removeClassFromAttrs'
 
 function SortComponent({ ...attrs }: ISort) {
     const { artsStore } = useContext(Context)
@@ -29,7 +28,6 @@ function SortComponent({ ...attrs }: ISort) {
                 <select
                     value={artsStore.sortParameter}
                     onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-                        console.log(e.target.value)
                         artsStore.setSortParameter(e.target.value)
                     }}
                     name="parameter"
@@ -52,4 +50,4 @@ function SortComponent({ ...attrs }: ISort) {
 }
 
 const Sort = observer(SortComponent)
-export default Sort
+export { Sort }

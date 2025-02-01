@@ -1,4 +1,5 @@
-@import '../../assets/fonts.scss';
+@import '@/assets/fonts.scss';
+@import '@/assets/variables.scss';
 
 .favorites__headers{
     font-family: $lexend-deca;
@@ -15,7 +16,7 @@
     }
 
     &__orange{
-        color: #F17900;
+        color: $highlighted-color-strong;
         display: inline-flex;
 
         &--image{

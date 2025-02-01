@@ -1,10 +1,10 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import AddFavorite from '../AddFavorite'
-import Favorites from '../../utils/favourites'
+import React from 'react'
 
-// Мокируем утилиту Favorites
+import Favorites from '../../utils/favourites'
+import AddFavorite from '../AddFavorite'
+
 jest.mock('../../utils/favourites')
 
 describe('AddFavorite Component', () => {

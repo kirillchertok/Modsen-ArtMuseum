@@ -1,9 +1,10 @@
-@import '../../assets/fonts.scss';
+@import '@/assets/fonts.scss';
+@import '@/assets/variables.scss';
 
 .details{
     &__container{
         width: 100%;
-        height: calc(100vh - 494px - 4rem);
+        height: calc(100vh - 34.875rem);
         padding: 2rem;
         display: inline-flex;
         box-sizing: border-box;
@@ -46,7 +47,7 @@
     &__top{
         &--artist{
             margin: 0 0 0.5rem 0;
-            color: #E0A449;
+            color: $highlighted-color-default;
             font-size: 1.5rem;
             font-weight: $font-weight-regular;
         }
@@ -67,7 +68,7 @@
             margin-bottom: 0.7rem;
 
             &--header{
-                color: #E0A449;
+                color: $highlighted-color-default;
                 margin-right: 5px;
             }
         }

@@ -1,4 +1,5 @@
-@import '../../assets/fonts.scss';
+@import '@/assets/fonts.scss';
+@import '@/assets/variables.scss';
 
 .search {
     &__input {
@@ -16,7 +17,7 @@
         margin-top: 0;
 
         &--highlight {
-            color: #F17900;
+            color: $highlighted-color-strong;
             text-transform: capitalize;
         }
 
