@@ -1,8 +1,3 @@
-<<<<<<< HEAD:src/components/Header/index.tsx
-import { useState, useRef } from 'react'
-import { HTMLAttributes } from 'react'
-=======
->>>>>>> release/1.0.1:src/components/ui/Header/index.tsx
 import './styles.scss'
 
 import { useRef, useState } from 'react'

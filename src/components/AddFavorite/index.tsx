@@ -1,6 +1,6 @@
 import './styles.scss'
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import bookMarkImg from '@/assets/images/bookmark.png'
 import { Img } from '@/components/ui/Img'
@@ -11,7 +11,7 @@ import { onFavoriteClick } from '@/utils/onFavoriteClick'
 export function AddFavorite({ artId, ...attrs }: IAddFavorite) {
     const [favorite, setFavorite] = useState(Favorites.checkInclude(artId))
 
-    function favoriteClick(event) {
+    function favoriteClick(event: React.MouseEvent<HTMLDivElement>) {
         event.preventDefault()
         event.stopPropagation()
         onFavoriteClick({ favorite, setFavorite, artId })

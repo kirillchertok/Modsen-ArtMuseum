@@ -1,7 +1,8 @@
 import './styles.scss'
+
+import { Footer } from '@/components/ui/Footer'
 import { Header } from '@/components/ui/Header'
 import { Main } from '@/components/ui/Main'
-import { Footer } from '@/components/ui/Footer'
 
 export function NotFound() {
     return (

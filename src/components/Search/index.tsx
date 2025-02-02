@@ -1,7 +1,7 @@
 import './styles.scss'
 
 import { Form, Formik } from 'formik'
-import React, { useCallback } from 'react'
+import React from 'react'
 import { z } from 'zod'
 import { toFormikValidationSchema } from 'zod-formik-adapter'
 
@@ -10,8 +10,8 @@ import { Img } from '@/components/ui/Img'
 import { Input } from '@/components/ui/Input'
 import { Section } from '@/components/ui/Section'
 import { useDebouncedSearch } from '@/hooks/useDebouncedSearch'
-import ISearch from '@/types/IComponents/ISearch'
 import { useSearchInput } from '@/hooks/useSearchInput'
+import ISearch from '@/types/IComponents/ISearch'
 
 const searchSchema = z.object({
     query: z.string().min(1, 'Search query cannot be empty')

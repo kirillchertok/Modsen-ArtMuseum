@@ -1,7 +1,8 @@
+import { useCallback,useState } from 'react'
+import { z } from 'zod'
+
 import { CHECK_LETTERS_AND_SPACES, CHECK_TWO_SPACE_IN_A_ROW } from '@/constants/inputRedex'
 import { IUseSearchInput } from '@/types/IHooks/IUseSearchInput'
-import { useState, useCallback } from 'react'
-import { z } from 'zod'
 
 const searchSchema = z.object({
     query: z
