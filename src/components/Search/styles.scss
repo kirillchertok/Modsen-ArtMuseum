@@ -21,8 +21,31 @@
             text-transform: capitalize;
         }
 
-        @media (max-width: 1024px) {
+
+        @media (max-width: 1023px) {
+            height: auto;
             width: 90%;
         }
+
+        @media (min-width: 1023px) and (max-width: 1024px) {
+            width: 35%;
+        }
+    }
+
+    &__error{
+        margin-top: 1rem;
+        width: 20rem;
+        height: 1.5rem;
+        background-color: rgba(255, 255, 255, 1);
+        border-radius: $default-border-radius;
+        text-align: center;
+        font-family: $lexend-deca;
+        color: $highlighted-color-default;
+        justify-self: center;
+        box-sizing: $default-item-box-sizing;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
     }
 }

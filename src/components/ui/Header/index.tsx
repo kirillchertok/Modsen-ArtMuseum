@@ -3,12 +3,11 @@ import './styles.scss'
 import { useRef, useState } from 'react'
 
 import { Img } from '@/components/ui/Img'
+import { Nav } from '@/components/ui/Nav'
 import { SideBarReactIcon } from '@/constants/icons'
 import useClickOutside from '@/hooks/useClickOutside'
 import IHeader from '@/types/IComponents/IHeader'
 import removeClassFromAttrs from '@/utils/removeClassFromAttrs'
-
-import { Nav } from '@/components/ui/Nav'
 
 export function Header({ header_type, ...attrs }: IHeader) {
     const baseClass = 'header'

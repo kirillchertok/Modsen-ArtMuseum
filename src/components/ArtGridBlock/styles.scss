@@ -18,6 +18,7 @@
         align-items: center;
         padding: 1rem;
         animation: appearance 0.7s forwards;
+        text-decoration: none;
     }
 
     &__image{
@@ -37,6 +38,7 @@
             width: 75%;
             height: 100%;
             overflow: hidden;
+            color: $default-text-color-dark;
         
             &>* {
                 margin: 0;
@@ -50,13 +52,7 @@
                 text-overflow: ellipsis;
                 font-weight: 500;
                 font-size: 1.2rem;
-                cursor: pointer;
-                transition: text-decoration 0.7s linear;
                 margin: 0 0 0.1rem 0;
-        
-                &:hover {
-                    text-decoration: underline;
-                }
             }
 
             &--artist{

@@ -11,6 +11,7 @@ import { Input } from '@/components/ui/Input'
 import { Section } from '@/components/ui/Section'
 import { useDebouncedSearch } from '@/hooks/useDebouncedSearch'
 import ISearch from '@/types/IComponents/ISearch'
+import { useSearchInput } from '@/hooks/useSearchInput'
 
 const searchSchema = z.object({
     query: z.string().min(1, 'Search query cannot be empty')
@@ -19,17 +20,7 @@ const searchSchema = z.object({
 export function Search({ onSearch }: ISearch) {
     const { handleDebouncedSearch } = useDebouncedSearch({ onSearch })
 
-    const onInputChange = useCallback(
-        (
-            e: React.ChangeEvent<HTMLInputElement>,
-            handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-        ) => {
-            const newValue = e.target.value
-            handleChange(e)
-            handleDebouncedSearch(newValue)
-        },
-        [handleDebouncedSearch]
-    )
+    const { error, onInputChange } = useSearchInput({ handleDebouncedSearch })
 
     return (
         <>
@@ -56,6 +47,7 @@ export function Search({ onSearch }: ISearch) {
                                 className="search__input"
                                 placeholder="Search Art, Artist, Work"
                             />
+                            {error && <div className="search__error">{error}</div>}
                         </Form>
                     )}
                 </Formik>

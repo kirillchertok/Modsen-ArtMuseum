@@ -3,7 +3,6 @@ import './styles.scss'
 import { useRef } from 'react'
 
 import IInput from '@/types/IComponents/IInput'
-
 import removeClassFromAttrs from '@/utils/removeClassFromAttrs'
 
 export function Input({ input_type, icon, ...attrs }: IInput) {

@@ -3,16 +3,16 @@ import './styles.scss'
 import { observer } from 'mobx-react-lite'
 import { useState } from 'react'
 
+import { ArtGridBlock } from '@/components/ArtGridBlock'
+import { Sort } from '@/components/Sort'
+import { Section } from '@/components/ui/Section'
+import ARTS_GRID_HEADERS from '@/constants/artsGridHeaders'
 import { AMOUNT_TO_FETCH, AMOUNT_TO_GET } from '@/constants/randomArts'
 import { useFetchArtsGrid } from '@/hooks/useFetchArtsGrid'
 import { useSortArts } from '@/hooks/useSortArtsGrid'
+import { IArt } from '@/types/IArt'
 import IArtsGrid from '@/types/IComponents/IArtsGrid'
 
-import ARTS_GRID_HEADERS from '@/constants/artsGridHeaders'
-import { IArt } from '@/types/IArt'
-import { ArtGridBlock } from '@/components/ArtGridBlock'
-import { Section } from '@/components/ui/Section'
-import { Sort } from '@/components/Sort'
 import { ArtsGridHeaders } from './ArtsGridHeaders'
 
 function ArtsGridComponent({ dataType }: IArtsGrid) {

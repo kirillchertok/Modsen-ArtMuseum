@@ -3,14 +3,13 @@ import './styles.scss'
 import { observer } from 'mobx-react-lite'
 import { useCallback, useContext, useState } from 'react'
 
+import { ArtBlock } from '@/components/ArtBlock'
+import { Section } from '@/components/ui/Section'
 import { PAGE_INTERVAL_LENGTH } from '@/constants/pagination'
 import { usePagination } from '@/hooks/usePagination'
 import { useSearch } from '@/hooks/useSearch'
-import IFoundArts from '@/types/IComponents/IFoundArts'
-
 import { Context } from '@/main'
-import { ArtBlock } from '@/components/ArtBlock'
-import { Section } from '@/components/ui/Section'
+import IFoundArts from '@/types/IComponents/IFoundArts'
 
 function FoundArtsComponent({ searchQuery, arts }: IFoundArts) {
     const { artsStore } = useContext(Context)

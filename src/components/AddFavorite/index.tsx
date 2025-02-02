@@ -1,18 +1,19 @@
 import './styles.scss'
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 import bookMarkImg from '@/assets/images/bookmark.png'
 import { Img } from '@/components/ui/Img'
 import IAddFavorite from '@/types/IComponents/IAddFavorite'
-import { onFavoriteClick } from '@/utils/onFavoriteClick'
-
 import Favorites from '@/utils/favorites'
+import { onFavoriteClick } from '@/utils/onFavoriteClick'
 
 export function AddFavorite({ artId, ...attrs }: IAddFavorite) {
     const [favorite, setFavorite] = useState(Favorites.checkInclude(artId))
 
-    function favoriteClick() {
+    function favoriteClick(event) {
+        event.preventDefault()
+        event.stopPropagation()
         onFavoriteClick({ favorite, setFavorite, artId })
     }
 

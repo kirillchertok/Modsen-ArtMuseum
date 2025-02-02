@@ -1,9 +1,9 @@
 import { useContext, useEffect } from "react"
 
+import { FAVORITES, RANDOM } from "@/constants/artsGridTypes"
 import { Context } from "@/main"
 import IUseFetchArtsGrid from "@/types/IHooks/IUseFetchArtsGrid"
 import Favorites from "@/utils/favorites"
-import { FAVORITES, RANDOM } from "@/constants/artsGridTypes"
 
 export function useFetchArtsGrid({
         dataType,

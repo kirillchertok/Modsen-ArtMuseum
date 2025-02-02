@@ -1,4 +1,4 @@
-const ARTS_PER_PAGE = 3;
+const ARTS_PER_PAGE = 5;
 const PAGE_INTERVAL_LENGTH = 4;
 
 export {

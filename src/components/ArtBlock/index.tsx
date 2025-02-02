@@ -3,15 +3,15 @@ import './styles.scss'
 import { Link } from 'react-router-dom'
 
 import noImageImg from '@/assets/images/no-image.png'
+import { AddFavorite } from '@/components/AddFavorite'
 import { Img } from '@/components/ui/Img'
 import IArtBlock from '@/types/IComponents/IArtBlock'
-
-import { AddFavorite } from '@/components/AddFavorite'
 
 export function ArtBlock({ data, ...attrs }: IArtBlock) {
     return (
         <>
-            <article
+            <Link
+                to={`/details/${data.id}`}
                 className="art"
                 {...attrs}
             >
@@ -22,12 +22,7 @@ export function ArtBlock({ data, ...attrs }: IArtBlock) {
                 />
                 <div className="art__description">
                     <div className="description__text">
-                        <Link
-                            to={`/details/${data.id}`}
-                            className="description__text--title"
-                        >
-                            {data.title}
-                        </Link>
+                        <div className="description__text--title">{data.title}</div>
                         <p className="description__text--artist">
                             {data.artist_title || 'Unknown'}
                         </p>
@@ -40,7 +35,7 @@ export function ArtBlock({ data, ...attrs }: IArtBlock) {
                         className="description__to-favorite"
                     />
                 </div>
-            </article>
+            </Link>
         </>
     )
 }

@@ -1,7 +1,6 @@
 import './styles.scss'
 
 import ISection from '@/types/IComponents/ISection'
-
 import removeClassFromAttrs from '@/utils/removeClassFromAttrs'
 
 export function Section({ children, ...attrs }: ISection) {

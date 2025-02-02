@@ -3,15 +3,14 @@ import './styles.scss'
 import { observer } from 'mobx-react-lite'
 import { useContext, useState } from 'react'
 
-import { Footer } from '@/components/ui/Footer'
+import ArtsGrid from '@/components/ArtsGrid'
 import { FoundArts } from '@/components/FoundArts'
+import { Search } from '@/components/Search'
+import { Footer } from '@/components/ui/Footer'
 import { Header } from '@/components/ui/Header'
 import { Loader } from '@/components/ui/Loader'
 import { Main } from '@/components/ui/Main'
 import { useFetchArtsHome } from '@/hooks/useFetchArtsHome'
-
-import ArtsGrid from '@/components/ArtsGrid'
-import { Search } from '@/components/Search'
 import { Context } from '@/main'
 
 function HomeComponent() {
