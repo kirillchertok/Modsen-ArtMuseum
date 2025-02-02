@@ -1,7 +1,8 @@
-@import '../../assets/fonts.scss';
+@import '@/assets/fonts.scss';
+@import '@/assets/variables.scss';
 
 .sort{
-    width: 20%;
+    width: 100%;
     height: 3rem;
     align-self: flex-start;
     margin-bottom: 1rem;
@@ -16,6 +17,10 @@
     &__label{
         font-size: 1.1rem;
         font-weight: 500;
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            font-size: 1.5rem;
+        }
     }
 
     &__select{
@@ -26,12 +31,16 @@
         margin-left: 1rem;
         border: none;
         font-size: 1rem;
-        border-radius: 10px;
+        border-radius: $default-border-radius;
         padding: 0.5rem;
         box-sizing: border-box;
 
         &:focus{
             outline: none;
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            font-size: 1.5rem;
         }
     }
 }

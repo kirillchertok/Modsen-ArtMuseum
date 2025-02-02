@@ -1,4 +1,4 @@
-import { FIELDS_TO_FETCH, DETAILED_FIELDS_TO_FETCH } from '../../src/constants/artsFetch';
+import { DETAILED_FIELDS_TO_FETCH,FIELDS_TO_FETCH } from '../../src/constants/artsFetch';
 
 describe('fieldsToFetch', () => {
     it('should export FIELDS_TO_FETCH with the correct value', () => {

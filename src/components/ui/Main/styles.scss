@@ -1,0 +1,23 @@
+@import '@/assets/variables.scss';
+
+:root{
+    --header-height: 8rem;
+    --footer-height: 8rem
+}
+
+.main{
+    margin: var(--header-height) 0 0 0;
+    width: 100vw;
+    min-height: calc(100vh - 16rem);
+    padding: 3.75rem 6.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: space-between;
+    background-color: $main-background-color;
+    box-sizing: $default-item-box-sizing;
+
+    @media (max-width: 1024px) {
+        padding: 2rem 0.5rem;
+    }
+}

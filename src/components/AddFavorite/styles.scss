@@ -15,16 +15,17 @@
     align-items: center;
     cursor: pointer;
     transition: all 0.3s linear;
+    outline: none;
 
     &:hover {
         transform: translate(2%, 2%);
     }
 
     &--in{
-        background-color: #FBD7B24D;
+        background-color: rgba(251, 215, 178, 0.3);
     }
 
     &--not-in{
-        background-color: #F9F9F9;
+        background-color: rgba(249, 249, 249, 1);
     }
 }

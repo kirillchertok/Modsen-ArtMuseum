@@ -1,24 +1,24 @@
-import { useContext, useEffect, useState } from 'react'
-import Footer from '../../components/Footer'
-import Header from '../../components/Header'
-import Main from '../../components/Main'
 import './styles.scss'
-import Search from '../../components/Search'
-import FoundArts from '../../components/FoundArts'
+
 import { observer } from 'mobx-react-lite'
-import { Context } from '../../main'
-import ArtsGrid from '../../components/ArtsGrid'
-import Loader from '@/components/Loader'
+import { useContext, useState } from 'react'
+
+import ArtsGrid from '@/components/ArtsGrid'
+import { FoundArts } from '@/components/FoundArts'
+import { Search } from '@/components/Search'
+import { Footer } from '@/components/ui/Footer'
+import { Header } from '@/components/ui/Header'
+import { Loader } from '@/components/ui/Loader'
+import { Main } from '@/components/ui/Main'
+import { useFetchArtsHome } from '@/hooks/useFetchArtsHome'
+import { Context } from '@/main'
 
 function HomeComponent() {
     const { artsStore } = useContext(Context)
 
     const [searchQuery, setSearchQuery] = useState('')
 
-    useEffect(() => {
-        if (sessionStorage.getItem('query')) sessionStorage.removeItem('query')
-        artsStore.initialFetch()
-    }, [])
+    useFetchArtsHome()
 
     const handleSearch = (query: string) => {
         setSearchQuery(query)
@@ -42,4 +42,4 @@ function HomeComponent() {
 }
 
 const Home = observer(HomeComponent)
-export default Home
+export { Home }

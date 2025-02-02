@@ -1,19 +1,17 @@
-import { IArt } from '../../services/interfaces/IArt'
-import Img from '../Img'
 import './styles.scss'
-import noImageImg from '@/assets/images/no-image.png'
-import AddFavorite from '../AddFavorite'
+
 import { Link } from 'react-router-dom'
 
-interface IArtBlock {
-    data: IArt
-    [key: string]: any
-}
+import noImageImg from '@/assets/images/no-image.png'
+import { AddFavorite } from '@/components/AddFavorite'
+import { Img } from '@/components/ui/Img'
+import IArtBlock from '@/types/IComponents/IArtBlock'
 
-function ArtBlock({ data, ...attrs }: IArtBlock) {
+export function ArtBlock({ data, ...attrs }: IArtBlock) {
     return (
         <>
-            <article
+            <Link
+                to={`/details/${data.id}`}
                 className="art"
                 {...attrs}
             >
@@ -24,12 +22,7 @@ function ArtBlock({ data, ...attrs }: IArtBlock) {
                 />
                 <div className="art__description">
                     <div className="description__text">
-                        <Link
-                            to={`/details/${data.id}`}
-                            className="description__text--title"
-                        >
-                            {data.title}
-                        </Link>
+                        <div className="description__text--title">{data.title}</div>
                         <p className="description__text--artist">
                             {data.artist_title || 'Unknown'}
                         </p>
@@ -42,9 +35,7 @@ function ArtBlock({ data, ...attrs }: IArtBlock) {
                         className="description__to-favorite"
                     />
                 </div>
-            </article>
+            </Link>
         </>
     )
 }
-
-export default ArtBlock

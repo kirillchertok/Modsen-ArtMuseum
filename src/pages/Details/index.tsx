@@ -1,42 +1,27 @@
-import { useParams } from 'react-router-dom'
 import './styles.scss'
-import Header from '@/components/Header'
-import Main from '@/components/Main'
-import Footer from '@/components/Footer'
-import { useContext, useEffect, useState } from 'react'
-import { Context } from '../../main'
-import DetailsError from '@/components/DetailsError'
-import { IArt } from '@/services/interfaces/IArt'
-import Img from '@/components/Img'
-import noImageImage from '@/assets/images/no-image.png'
-import AddFavorite from '@/components/AddFavorite'
-import Loader from '@/components/Loader'
 
-function Details() {
+import { useContext, useState } from 'react'
+import { useParams } from 'react-router-dom'
+
+import noImageImage from '@/assets/images/no-image.png'
+import { AddFavorite } from '@/components/AddFavorite'
+import { DetailsError } from '@/components/ui/DetailsError'
+import { Footer } from '@/components/ui/Footer'
+import { Header } from '@/components/ui/Header'
+import { Img } from '@/components/ui/Img'
+import { Loader } from '@/components/ui/Loader'
+import { Main } from '@/components/ui/Main'
+import { useFetchArt } from '@/hooks/useFetchArt'
+import { Context } from '@/main'
+import { IArt } from '@/types/IArt'
+
+export function Details() {
     const { artsStore } = useContext(Context)
     const { id } = useParams<{ id: string }>()
     const [error, setError] = useState<string>('')
     const [art, setArt] = useState<IArt>()
 
-    useEffect(() => {
-        const fetchArt = async (id: number) => {
-            const response = await artsStore.getDetails(id)
-            if (response) {
-                console.log(response)
-                if (response == 'No artwork with this id') {
-                    setError(response)
-                } else {
-                    setArt(response)
-                }
-            }
-        }
-
-        if (id) {
-            fetchArt(Number(id))
-        } else {
-            setError('No art to get, please enter id in search query')
-        }
-    }, [id])
+    useFetchArt({ id, setError, setArt })
 
     return (
         <>
@@ -113,5 +98,3 @@ function Details() {
         </>
     )
 }
-
-export default Details

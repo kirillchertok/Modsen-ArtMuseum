@@ -1,19 +1,19 @@
-import { IArt } from '../../services/interfaces/IArt'
-import Img from '../Img'
 import './styles.scss'
-import noImageImg from '@/assets/images/no-image.png'
-import AddFavorite from '../AddFavorite'
+
 import { Link } from 'react-router-dom'
 
-interface IArtGridBlock {
-    data: IArt
-    [key: string]: any
-}
+import noImageImg from '@/assets/images/no-image.png'
+import { AddFavorite } from '@/components/AddFavorite'
+import { Img } from '@/components/ui/Img'
+import IArtGridBlock from '@/types/IComponents/IArtGridBlock'
 
-function ArtGridBlock({ data }: IArtGridBlock) {
+export function ArtGridBlock({ data }: IArtGridBlock) {
     return (
         <>
-            <article className="art-grid__container">
+            <Link
+                className="art-grid__container"
+                to={`/details/${data.id}`}
+            >
                 <Img
                     src={data.image_url || noImageImg}
                     alt={`image for ${data.id}`}
@@ -21,12 +21,7 @@ function ArtGridBlock({ data }: IArtGridBlock) {
                 />
                 <div className="art-grid__description">
                     <div className="art-grid__description__text">
-                        <Link
-                            to={`/details/${data.id}`}
-                            className="description__text--title"
-                        >
-                            {data.title}
-                        </Link>
+                        <div className="description__text--title">{data.title}</div>
                         <p className="art-grid__description__text--artist">
                             {data.artist_title || 'Unknown'}
                         </p>
@@ -39,9 +34,7 @@ function ArtGridBlock({ data }: IArtGridBlock) {
                         className="art-grid__description__favorite"
                     />
                 </div>
-            </article>
+            </Link>
         </>
     )
 }
-
-export default ArtGridBlock

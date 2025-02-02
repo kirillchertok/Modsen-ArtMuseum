@@ -1,31 +1,28 @@
-import { HTMLAttributes, useState } from 'react'
-import Img from '../Img'
 import './styles.scss'
+
+import React, { useState } from 'react'
+
 import bookMarkImg from '@/assets/images/bookmark.png'
-import Favorites from '../../utils/favourites'
+import { Img } from '@/components/ui/Img'
+import IAddFavorite from '@/types/IComponents/IAddFavorite'
+import Favorites from '@/utils/favorites'
+import { onFavoriteClick } from '@/utils/onFavoriteClick'
 
-interface IAddFavorite extends HTMLAttributes<HTMLElement> {
-    artId: number
-    [key: string]: any
-}
-
-function AddFavorite({ artId, ...attrs }: IAddFavorite) {
+export function AddFavorite({ artId, ...attrs }: IAddFavorite) {
     const [favorite, setFavorite] = useState(Favorites.checkInclude(artId))
+
+    function favoriteClick(event) {
+        event.preventDefault()
+        event.stopPropagation()
+        onFavoriteClick({ favorite, setFavorite, artId })
+    }
 
     return (
         <>
             <div className={`favorite__container ${attrs.className || ''}`}>
                 <div
                     className={`favorite__image-container ${favorite ? 'favorite__image-container--in' : 'favorite__image-container--not-in'}`}
-                    onClick={() => {
-                        if (favorite) {
-                            Favorites.removeFromFavorite(artId)
-                            setFavorite(false)
-                        } else {
-                            Favorites.addToFavorite(artId)
-                            setFavorite(true)
-                        }
-                    }}
+                    onClick={favoriteClick}
                 >
                     <Img
                         src={bookMarkImg}
@@ -37,5 +34,3 @@ function AddFavorite({ artId, ...attrs }: IAddFavorite) {
         </>
     )
 }
-
-export default AddFavorite

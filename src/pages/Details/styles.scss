@@ -1,18 +1,23 @@
-@import '../../assets/fonts.scss';
+@import '@/assets/fonts.scss';
+@import '@/assets/variables.scss';
 
 .details{
     &__container{
         width: 100%;
-        height: calc(100vh - 494px - 4rem);
+        // height: calc(100vh - 34.875rem);
         padding: 2rem;
         display: inline-flex;
         box-sizing: border-box;
+
+        @media (max-width: 1024px) {
+            flex-wrap: wrap;
+        }
     }
     
     &__image{
         max-width: 30%;
         height: 100%;
-        position: relative;
+        position: relative; 
 
         &__img{
             max-width: 100%;
@@ -23,6 +28,15 @@
             position: absolute;
             top: 1rem;
             left: calc(100% - 4.75rem);
+
+            @media (max-width: 1024px) {
+                width: 5rem;
+                height: 5rem;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            max-width: 100%;
         }
     }
 }
@@ -37,24 +51,45 @@
     justify-content: space-between;
     align-items: flex-start;
 
+    @media (max-width: 1024px) {
+        margin-top: 1rem;
+        width: 100%;
+    }
+
     &--header{
         margin-top: 0;
         font-size: 2rem;
         font-weight: $font-weight-regular;
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            font-size: 3rem;
+        }
+
+        @media (max-width: 1024px) {
+            margin-bottom: 0.5rem;
+        }
     }
 
     &__top{
         &--artist{
             margin: 0 0 0.5rem 0;
-            color: #E0A449;
+            color: $highlighted-color-default;
             font-size: 1.5rem;
             font-weight: $font-weight-regular;
+
+            @media (min-width: 768px) and (max-width: 1024px) {
+                font-size: 2rem;
+            }
         }
 
         &--years{
             margin-top: 0;
             font-size: 1rem;
             font-weight: $font-weight-bold;
+
+            @media (min-width: 768px) and (max-width: 1024px) {
+                font-size: 1.5rem;
+            }
         }
     }
 
@@ -63,11 +98,15 @@
         padding: 0;
         margin: 0;
 
+        @media (min-width: 768px) and (max-width: 1024px) {
+            font-size: 1.5rem;
+        }
+
         &__li{
             margin-bottom: 0.7rem;
 
             &--header{
-                color: #E0A449;
+                color: $highlighted-color-default;
                 margin-right: 5px;
             }
         }

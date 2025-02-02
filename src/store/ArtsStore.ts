@@ -1,6 +1,7 @@
 import { makeAutoObservable } from "mobx";
-import { IArt, IPagination } from "../services/interfaces/IArt";
-import Arts from "../services/arts";
+
+import Arts from "@/services/arts";
+import { IArt, IPagination } from "@/types/IArt";
 
 export default class ArtsStore{
     isFetching = false;
